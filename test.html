@@ -1,0 +1,168 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月經追蹤系統</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            color: #5a3e36;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        header {
+            background-color: #ffb6c1;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            width: 100%;
+        }
+        main {
+            flex: 2;
+            padding: 20px;
+        }
+        .calendar {
+            background: #ffc0cb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+        .day {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .selected {
+            background: #ff69b4 !important;
+            color: white;
+        }
+        .countdown {
+            background: #ffb6c1;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .timeline {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .progress-bar {
+            height: 10px;
+            background: #ffb6c1;
+            border-radius: 5px;
+            position: relative;
+        }
+        .marker {
+            width: 10px;
+            height: 10px;
+            background: red;
+            position: absolute;
+            left: 20%;
+            top: -2px;
+            border-radius: 50%;
+        }
+        aside {
+            width: 250px;
+            background: #ffe4e1;
+            padding: 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 10px 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #5a3e36;
+            font-weight: bold;
+        }
+        .emer {
+            background: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .user-profile {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>阿月</h1>
+        <h1>月經追蹤系統</h1>
+    </header>
+    <main>
+        <section class="calendar">
+            <h2>月經日曆</h2>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- 日曆天數將由 JavaScript 生成 -->
+            </div>
+        </section>
+        <section class="countdown">
+            <p>您的經期預計 <span id="countdown-days">XX</span> 天後到來</p>
+        </section>
+        <section class="timeline">
+            <p>月經期排卵期</p>
+            <div class="progress-bar">
+                <div class="marker"></div>
+            </div>
+            
+        </section>
+    </main>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="#">Home Page</a></li>
+                <li><a href="#">AI Doctor</a></li>
+                <li><a href="#">症狀紀錄</a></li>
+                <li><a href="#">運動紀錄</a></li>
+                <li><a href="#">飲食紀錄</a></li>
+                <li><a href="#">附近診所推薦</a></li>
+                <li><a href="#">其他相關網站</a></li>
+            </ul>
+        </nav>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button class="emer">EMER</button>
+        <div class="user-profile">User</div>
+    </aside>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const calendarGrid = document.getElementById("calendar-grid");
+            for (let i = 1; i <= 30; i++) {
+                let day = document.createElement("div");
+                day.classList.add("day");
+                day.textContent = i;
+                day.addEventListener("click", function() {
+                    day.classList.toggle("selected");
+                });
+                calendarGrid.appendChild(day);
+            }
+        });
+    </script>
+</body>
+</html>
